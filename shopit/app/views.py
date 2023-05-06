@@ -2,12 +2,31 @@
 # Create your views here.
 
 from django.shortcuts import render
+from django.views import View
+from .models import*
 
-def home(request):
- return render(request, 'app/home.html')
 
-def product_detail(request):
- return render(request, 'app/productdetail.html')
+#def home(request):
+# return render(request, 'app/home.html')
+
+
+class ProductView(View):
+    def get(self , request):
+        
+        #here we will get the products that are 
+        topwears = Product.objects.filter(category = 'TW')
+        bottompwears = Product.objects.filter(category = 'BW')
+        mobiles = Product.objects.filter(category = 'M')                        #passing our dictionsary into the context
+        return render(request , 'app/home.html' , {'topwears': topwears , 'bottomwears' : bottompwears , 'mobiles': mobiles})
+
+
+class ProductDEtailView(View):
+    def get(self , request , pk):
+        product = Product.objects.get(pk = pk)
+        return render(request , 'app/productdetail.html' , {'product' : product})
+
+
+
 
 def add_to_cart(request):
  return render(request, 'app/addtocart.html')
