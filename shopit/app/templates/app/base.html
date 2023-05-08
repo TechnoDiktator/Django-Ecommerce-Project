@@ -19,9 +19,10 @@
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 
 
-    <title>Shopit | {% block title %} {% endblock title %} </title>
+    <title>Shopit {% block title %} {% endblock title %} </title>
+  
   </head>
-  <body>
+  <body class = 'bodybg'  >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
      <div class="container">
        <a class="navbar-brand" href="/">ShopIt</a>
@@ -53,12 +54,7 @@
            </li>
          </ul>
 
-         <!--    we will not use search
-         <form class="d-flex">
-           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           <button class="btn btn-warning" type="submit">S</button>
-         </form>
-         -->
+
          <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if request.user.is_authenticated %}
