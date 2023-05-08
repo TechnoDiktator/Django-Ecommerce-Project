@@ -7,6 +7,9 @@ from .models import*
 from .forms import *
 from django.http import request , response 
 from django.contrib import messages
+from .forms import CustomerRegistrationForm , CustomerProfileForm
+
+
 
 
 #def home(request):
@@ -79,6 +82,13 @@ class CustomerRegistrationView(View):
             messages.success(request , 'Successfully registered!')
             form.save()
         return render(request , 'app/customerregistration.html' , {'form' : form})   
+
+
+class ProfileView(View):
+    def get(self , request):
+        form = CustomerProfileForm()
+        return render(request , 'app/profile.html' , {'form':form})
+       
 
 
 
