@@ -9,7 +9,7 @@
    <hr>
    <form action="" method="post" novalidate class="shadow p-5">
      {% csrf_token %}
-     {% for fm in form %}
+     {% for fm in form %}  <!--This form object is coming from the django LoginView class ....see urls.py /accounts/login url-->
       <div class="form-group">
       {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
       </div>

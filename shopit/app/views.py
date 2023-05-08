@@ -64,10 +64,6 @@ def mobile(request , data = None):
 
 
 
-
-def login(request):
- return render(request, 'app/login.html')
-
 #def customerregistration(request):
  #return render(request, 'app/customerregistration.html')
 class CustomerRegistrationView(View):
@@ -83,6 +79,9 @@ class CustomerRegistrationView(View):
             messages.success(request , 'Successfully registered!')
             form.save()
         return render(request , 'app/customerregistration.html' , {'form' : form})   
+
+
+
 
 def checkout(request):
  return render(request, 'app/checkout.html')
