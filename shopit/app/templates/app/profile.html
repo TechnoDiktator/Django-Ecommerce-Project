@@ -7,8 +7,8 @@
   <h3>Welcome <span class="text-capitalize">{{request.user}}</span> </h3>
   <div class="col-sm-2 border-end">
    <ul class="list-unstyled">
-    <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}}">Profile</a></li>
-    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}}">Add new address</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Registered Addresses</a></li>
    </ul>
   </div>
   <div class="col-sm-8 offset-sm-1">
@@ -20,7 +20,7 @@
       </div>
      {% endfor %}
     <div class="col-12 mt-3">
-      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+      <button type="submit" class="btn btn-primary mb-3">Add</button>
     </div>
    </form>
    {% if messages %}
