@@ -2,6 +2,15 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 
+
+{% block extra_css %}
+
+    <!--Custom CSS file-->
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+{% endblock %}
+
+{% block body_class %} bodybg {% endblock %}
+
 {% block banner_slider %}
 <!--Banner Slider-->
  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -112,11 +121,6 @@
    </div>
   </div>
  </div>
- <!-- End Payment Info Section -->
- 
 
-
-
-<!-- End 2nd Product Slider -->
 {% endblock main-content %}
 

@@ -17,12 +17,12 @@
 
     <!--Custom CSS file-->
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-
+    {% block extra_css %}{% endblock %}
 
     <title>Shopit {% block title %} {% endblock title %} </title>
   
   </head>
-  <body class = 'bodybg'  >
+  <body class = "{% block body_class %}{% endblock %}" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
      <div class="container">
        <a class="navbar-brand" href="/">ShopIt</a>
@@ -87,6 +87,7 @@
        </div>
      </div>
     </nav>
+
     {% block banner_slider %} {% endblock banner_slider %}
     {% block livesale %} {% endblock livesale %}
     {% block main-content %} {% endblock main-content %}
