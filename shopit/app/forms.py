@@ -9,7 +9,7 @@ from .models import *
 class CustomerRegistrationForm(UserCreationForm):
     password1 = forms.CharField(required=True ,  label = 'Password' , widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(required=True , label = 'Confirm Password' , widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    email = forms.CharField(required=True ,  label = 'Confirm Password' , widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(required=True ,  label = 'Email' , widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User

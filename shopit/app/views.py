@@ -42,14 +42,28 @@ def add_to_cart(request):
     product = Product.objects.get(id = productid)
     print(productid , user)
     Cart(user = user , product = product).save()
-    return redirect('/cart')
+    return redirect('/showcart')
 
 def show_cart(request):
     if request.user.is_authenticated:
         user = request.user
         cart = Cart.objects.filter(user = user)
-        return render(request, 'app/addtocart.html' , {'carts' : cart})
-    
+        amount = 0.0
+        shipping_amount = 0.0
+        totalamount = 0.0
+        cart_product = [p for p in Cart.objects.all() if  p.user == user ] #getting all the 
+        
+        if cart_product:
+            for p in cart_product:
+                tempamt = (p.quantity* p.product.discounted_price)
+                amount+=tempamt
+                tempshippingamount = tempamt*0.04
+                shipping_amount +=tempshippingamount
+                totalamount = amount + shipping_amount
+        
+            return render(request, 'app/addtocart.html' , {'carts' : cart , 'totalamount' : totalamount , 'amount':amount , 'shippingamount': shipping_amount})
+        else:
+            return render(request , 'app/emptycart.html')
         
 
     
