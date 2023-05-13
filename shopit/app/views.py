@@ -116,7 +116,7 @@ def change_password(request):
  return render(request, 'app/changepassword.html')
 
 def mobile(request , data = None):
-    brands = ['Apple' , 'Samsung' , 'Redmi' , 'Realmi' , 'Nokia' , 'Oneplus' , 'Oppe' , 'Vivo' , 'Lenovo' , 'Asus' , 'RedMagic' , 'Razor' , 'Pixel' ]
+    brands = ['Apple' , 'Samsung' , 'Redmi' , 'Realmi' , 'Nokia' , 'Oneplus' , 'Oppo' , 'Vivo' , 'Lenovo' , 'Asus' , 'RedMagic' , 'Razor' , 'Pixel' ]
     if data == None:
         mobiles = Product.objects.filter(category = 'M')  #show all phones
     elif data == 'below':
@@ -127,6 +127,47 @@ def mobile(request , data = None):
         mobiles = Product.objects.filter(category = 'M').filter(brand = data)
         
     return render(request, 'app/mobile.html' , {'mobiles': mobiles , 'brands' : brands})
+
+
+def topwear(request , data = None):
+    brands = ['Roadster' , 'Levis' , 'US Polo' , 'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
+    if data == None:
+        mobiles = Product.objects.filter(category = 'TW')  #show all phones
+    elif data == 'below':
+        mobiles = Product.objects.filter(category = 'TW').filter(discounted_price__lt =20000)
+    elif data == 'above':
+        mobiles = Product.objects.filter(category = 'TW').filter(discounted_price__gt =20000)
+    else:
+        mobiles = Product.objects.filter(category = 'TW').filter(brand = data)
+        
+    return render(request, 'app/topwear.html' , {'topwear': mobiles , 'brands' : brands})
+
+def bottomwear(request , data = None):
+    brands = ['Roadster' , 'Levis' , 'US Polo' , 'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
+    if data == None:
+        mobiles = Product.objects.filter(category = 'BW')  #show all phones
+    elif data == 'below':
+        mobiles = Product.objects.filter(category = 'BW').filter(discounted_price__lt =20000)
+    elif data == 'above':
+        mobiles = Product.objects.filter(category = 'BW').filter(discounted_price__gt =20000)
+    else:
+        mobiles = Product.objects.filter(category = 'BW').filter(brand = data)
+        
+    return render(request, 'app/bottomwear.html' , {'bottomwear': mobiles , 'brands' : brands})
+
+def laptops(request , data = None):
+    brands = ['Apple' , 'Samsung' , 'Redmi' , 'Realmi' , 'Nokia' , 'Oneplus' , 'Oppe' , 'Vivo' , 'Lenovo' , 'Asus' , 'RedMagic' , 'Razor' , 'Pixel' ]
+    if data == None:
+        mobiles = Product.objects.filter(category = 'L')  #show all phones
+    elif data == 'below':
+        mobiles = Product.objects.filter(category = 'L').filter(discounted_price__lt =20000)
+    elif data == 'above':
+        mobiles = Product.objects.filter(category = 'L').filter(discounted_price__gt =20000)
+    else:
+        mobiles = Product.objects.filter(category = 'L').filter(brand = data)
+        
+    return render(request, 'app/laptops.html' , {'laptops': mobiles , 'brands' : brands})
+
 
 
 
