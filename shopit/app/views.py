@@ -97,6 +97,66 @@ def plus_cart(request):
     
 
 
+def remove_cart(request):
+    user = request.user
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get( Q(product = prod_id)  &  Q(user = request.user))
+    
+        c.delete()
+        amount = 0.0
+        shipping_amount = 0.0
+        total_amount = 0.0
+        cart_product = [p for p in Cart.objects.all() if p.user == user]
+        for p in cart_product:
+            tempamt = (p.quantity* p.product.discounted_price)
+            amount+=tempamt
+            tempshippingamount = tempamt*0.04
+            shipping_amount +=tempshippingamount
+            total_amount = amount + shipping_amount
+            
+        data = {
+            
+            'amount': amount , 
+            'totalamount': total_amount,
+            'shippingamount': shipping_amount
+            
+        } 
+        return JsonResponse(data)
+    
+
+def minus_cart(request):
+    user = request.user
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        c = Cart.objects.get( Q(product = prod_id)  &  Q(user = request.user))
+        c.quantity -= 1
+        c.save()
+        amount = 0.0
+        shipping_amount = 0.0
+        total_amount = 0.0
+        cart_product = [p for p in Cart.objects.all() if p.user == user]
+        for p in cart_product:
+            tempamt = (p.quantity* p.product.discounted_price)
+            amount+=tempamt
+            tempshippingamount = tempamt*0.04
+            shipping_amount +=tempshippingamount
+            total_amount = amount + shipping_amount
+            
+        data = {
+            'quantity' : c.quantity,
+            'amount': amount , 
+            'totalamount': total_amount,
+            'shippingamount': shipping_amount
+            
+        } 
+        return JsonResponse(data)
+    
+
+
+
+
+
     
     
 def buy_now(request):
@@ -130,7 +190,7 @@ def mobile(request , data = None):
 
 
 def topwear(request , data = None):
-    brands = ['Roadster' , 'Levis' , 'US Polo' , 'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
+    brands = ['Roadster' , 'Levis' , 'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
     if data == None:
         mobiles = Product.objects.filter(category = 'TW')  #show all phones
     elif data == 'below':
@@ -143,7 +203,7 @@ def topwear(request , data = None):
     return render(request, 'app/topwear.html' , {'topwear': mobiles , 'brands' : brands})
 
 def bottomwear(request , data = None):
-    brands = ['Roadster' , 'Levis' , 'US Polo' , 'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
+    brands = ['Roadster' , 'Levis' ,  'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
     if data == None:
         mobiles = Product.objects.filter(category = 'BW')  #show all phones
     elif data == 'below':
