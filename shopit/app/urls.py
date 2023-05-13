@@ -24,6 +24,9 @@ urlpatterns = [
     path('mobile/', views.mobile, name='mobile'),
     path('mobile/<slug:data>', views.mobile, name='mobile'),
     
+    
+    path('paymentdone/' , views.payment_done , name = 'payment_done'),
+    
     path('topwear/', views.topwear, name='topwear'),
     path('topwear/<slug:data>', views.topwear, name='topwear'),
     
