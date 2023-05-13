@@ -25,7 +25,9 @@ $('#slider1, #slider2, #slider3').owlCarousel({
 
 $('.plus-cart').click(function(){
     var id = $(this).attr("pid").toString();
+    var eml = this.parentNode.children[2]
     console.log(id)
+    console.log("plus clicked")
     $.ajax({
         type:"GET",
         url:"/pluscart",
@@ -35,6 +37,10 @@ $('.plus-cart').click(function(){
         success: function(data){
             console.log(data)
             console.log("success")
+            eml.innerText = data.quantity
+            ducument.getElementById("amount").innerText = data.amount
+            ducument.getElementById("totalamount").innerText = data.totalamount
+
         }
 
     })

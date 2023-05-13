@@ -90,6 +90,7 @@ def plus_cart(request):
             'quantity' : c.quantity,
             'amount': amount , 
             'totalamount': total_amount,
+            'shippingamount': shipping_amount
             
         } 
         return JsonResponse(data)
