@@ -24,20 +24,25 @@ This project can easily be extended to incorporate multiple features such as  - 
 ### Payments Integration
 ### see Order Status / Delivery Status 
 
+## SnapShots
 
 
 
 
-shopit.png
+![shopit](https://github.com/TechnoDiktator/Django-Ecommerce-Project/assets/99278069/30624b48-d8f0-4cb7-9ca1-eb15c01dfa3f)
 
 
-shopit2.png
 
 
-shopit3.png
+
+![shopit2](https://github.com/TechnoDiktator/Django-Ecommerce-Project/assets/99278069/ed00732b-01f1-4cbf-a3be-5ea0151e20a2)
 
 
-shopit4.png
+
+
+![shopit3](https://github.com/TechnoDiktator/Django-Ecommerce-Project/assets/99278069/ccf4e905-107c-4a62-a326-f354dca2b9e5)
+
+
 
 
 
