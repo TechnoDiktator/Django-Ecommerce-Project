@@ -67,7 +67,7 @@
  <!-- Slider 1 -->
  <div class="owl-carousel" id="slider1">
   {%for b in bottomwears%}
-  <a href="{% url 'product-detail' b.id %}" class="btn"><div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">{{b.discounted_price}}</span></div></a>
+  <a href="{% url 'product-detail' b.id %}" class="btn"><div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span></div></a>
    {% endfor %}
  </div>
 </div>
