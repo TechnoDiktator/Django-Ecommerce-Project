@@ -22,6 +22,23 @@ This project can easily be extended to incorporate multiple features such as  - 
 ### User Profile editing/updating , adding multiple delivery address
 ### Filter Products by BrandName
 ### Payments Integration
+### see Order Status / Delivery Status 
+
+
+
+
+
+shopit.png
+
+
+shopit2.png
+
+
+shopit3.png
+
+
+shopit4.png
+
 
 
 
