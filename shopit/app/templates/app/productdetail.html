@@ -11,11 +11,12 @@
    <h2>{{product.title}}</h2>
    <hr>
    <p>{{product.description}}</p> <br>
-   <h4>Rs. {{product.discounted_price}} <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></h4> <br>
+   <h4>Rs. {{product.discounted_price}} <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></h4>
 
    {% if user.is_authenticated  %}
-    {% if item_already_in_cart  %}
-     <a href="{% url 'showcart' %}" class="btn btn-success shadow px-5 py-2 ms-4">Go to Cart</a>
+    {% if item_already_in_cart  %} 
+      <p>Item already in cart</p> 
+     <a href="{% url 'showcart' %}" class="btn btn-info shadow px-5 py-2 ms-4">Go to Cart</a>
     {% else %}
      <form action="/add-to-cart" class="d-inline">
       <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
@@ -23,6 +24,7 @@
      </form>
     {% endif %}
    {% endif %}
+
 
    {% if not request.user.is_authenticated %}
      <form action="/add-to-cart" class="d-inline">
@@ -33,7 +35,8 @@
 
 
 
-   <a href="{% url 'checkout' %}" class="btn btn-success shadow px-5 py-2 ms-4">Buy Now</a>
+
+   <a href="{% url 'checkout' %}" class="btn btn-success shadow px-5 py-2 ms-4">Check out</a>
    <h5 class="mt-5">Available Offers</h5>
    <ul>
     <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>

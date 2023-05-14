@@ -103,6 +103,7 @@ STATUS_CHOICES = (
     ('On Way To Delivery' , 'On Way TO Delivery'),
     ('Delivered' , 'Delivered'),
     ('Cancelled' , 'Cancelled'),
+    ('Pending' , 'Pending'),
 )
 
 
@@ -117,6 +118,12 @@ class OrderPlaced(models.Model):
 
     def __str__(self) -> str:
         return str(self.id)
+    
+        
+    @property
+    def total_cost(self):
+        return self.quantity*self.product.discounted_price
+
 
 
 
