@@ -22,21 +22,34 @@ from django.utils.decorators import method_decorator
 class ProductView(View):
     def get(self , request):
         
+        totalitem = 0
+        
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user = request.user))
+            
+        
         #here we will get the products that are 
         topwears = Product.objects.filter(category = 'TW')
         bottompwears = Product.objects.filter(category = 'BW')
         mobiles = Product.objects.filter(category = 'M')                        #passing our dictionsary into the context
-        return render(request , 'app/home.html' , {'topwears': topwears , 'bottomwears' : bottompwears , 'mobiles': mobiles})
+        return render(request , 'app/home.html' , {'topwears': topwears , 'bottomwears' : bottompwears , 'mobiles': mobiles , 'totalitem' : totalitem})
 
 
 class ProductDEtailView(View):
     def get(self , request , pk):
+        
+        totalitem = 0
+        
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user = request.user))
+            
+        
         product = Product.objects.get(pk = pk)
         item_already_in_cart = False
         if request.user.is_authenticated :
             item_already_in_cart = Cart.objects.filter(Q(product = product.id) & Q(user = request.user)).exists()
         
-        return render(request , 'app/productdetail.html' , {'product' : product , 'item_already_in_cart' : item_already_in_cart})
+        return render(request , 'app/productdetail.html' , {'product' : product , 'item_already_in_cart' : item_already_in_cart , 'totalitem' : totalitem })
 
 
 
@@ -57,6 +70,11 @@ def add_to_cart(request):
 
 login_required
 def show_cart(request):
+    totalitem = 0
+    
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user = request.user))
+            
     if request.user.is_authenticated:
         user = request.user
         cart = Cart.objects.filter(user = user)
@@ -73,7 +91,7 @@ def show_cart(request):
                 shipping_amount +=tempshippingamount
                 totalamount = amount + shipping_amount
         
-            return render(request, 'app/addtocart.html' , {'carts' : cart , 'totalamount' : totalamount , 'amount':amount , 'shippingamount': shipping_amount})
+            return render(request, 'app/addtocart.html' , {'carts' : cart , 'totalamount' : totalamount , 'amount':amount , 'shippingamount': shipping_amount , 'totalitem' : totalitem})
         else:
             return render(request , 'app/emptycart.html')
         
