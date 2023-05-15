@@ -12,7 +12,8 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.utils.html import format_html
+from django.urls import reverse
 
 
 #def home(request):
@@ -339,10 +340,5 @@ def checkout(request):
         tempshippingamount = tempamt*0.04
         shipping_amount +=tempshippingamount
         total_amount = amount + shipping_amount
-        
-    
-    
-    
     return render(request, 'app/checkout.html'  , {'add' : add , 'totalamount': total_amount , 'cart_items' : cart_items} )
-
 
