@@ -10,10 +10,10 @@
           All Brands 
         </a>
         {%for brand in brands%}
-        <a href="{% url 'mobile' brand %}" class="list-group-item list-group-item-action">{{brand}}</a>
+        <a href="{% url 'laptops' brand %}" class="list-group-item list-group-item-action">{{brand}}</a>
         {%endfor%}
-        <a href="{% url 'mobile' 'below' %}" class="list-group-item list-group-item-action">Economy</a>
-        <a href="{% url 'mobile' 'above' %}" class="list-group-item list-group-item-action">Premium</a>
+        <a href="{% url 'laptops' 'below' %}" class="list-group-item list-group-item-action">Economy</a>
+        <a href="{% url 'laptops' 'above' %}" class="list-group-item list-group-item-action">Premium</a>
     </div>
   </div>
 

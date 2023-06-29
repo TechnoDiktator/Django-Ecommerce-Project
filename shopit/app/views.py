@@ -248,13 +248,13 @@ def bottomwear(request , data = None):
 
 
 def laptops(request , data = None):
-    brands = ['Apple' , 'Samsung' , 'Redmi' , 'Realmi' , 'Nokia' , 'Oneplus' , 'Oppe' , 'Vivo' , 'Lenovo' , 'Asus' , 'RedMagic' , 'Razor' , 'Pixel' ]
+    brands = ['Apple' , 'Samsung' , 'Redmi' , 'Razr'  , 'Asus' , 'Predator' , 'Dell' , 'HP']
     if data == None:
         mobiles = Product.objects.filter(category = 'L')  #show all phones
     elif data == 'below':
-        mobiles = Product.objects.filter(category = 'L').filter(discounted_price__lt =20000)
+        mobiles = Product.objects.filter(category = 'L').filter(discounted_price__lt =40000)
     elif data == 'above':
-        mobiles = Product.objects.filter(category = 'L').filter(discounted_price__gt =20000)
+        mobiles = Product.objects.filter(category = 'L').filter(discounted_price__gt =40000)
     else:
         mobiles = Product.objects.filter(category = 'L').filter(brand = data)
         
