@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path , reverse , reverse_lazy
 from app import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -40,7 +40,7 @@ urlpatterns = [
     path('laptops/<slug:data>', views.laptops, name='laptops'),
     
     
-    path('logout/'  , auth_views.LogoutView.as_view( next_page = '' )  , name='logout'),
+    path('logout/'  , auth_views.LogoutView.as_view(  next_page = reverse_lazy('home') )  , name='logout'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
     path('checkout/', views.checkout, name='checkout'),
     path('passwordchangedone/' , auth_views.PasswordChangeDoneView.as_view(template_name = 'app/passwordchangedone.html')  , name='passwordchangedone'),
