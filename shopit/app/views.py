@@ -221,26 +221,26 @@ def mobile(request , data = None):
 
 
 def topwear(request , data = None):
-    brands = ['Roadster' , 'Levis' , 'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
+    brands = ['Roadster' , 'Levis' ,  'Manyavar' , 'Fossil' ]
     if data == None:
         mobiles = Product.objects.filter(category = 'TW')  #show all phones
     elif data == 'below':
-        mobiles = Product.objects.filter(category = 'TW').filter(discounted_price__lt =20000)
+        mobiles = Product.objects.filter(category = 'TW').filter(discounted_price__lt =2000)
     elif data == 'above':
-        mobiles = Product.objects.filter(category = 'TW').filter(discounted_price__gt =20000)
+        mobiles = Product.objects.filter(category = 'TW').filter(discounted_price__gt =2000)
     else:
         mobiles = Product.objects.filter(category = 'TW').filter(brand = data)
         
     return render(request, 'app/topwear.html' , {'topwear': mobiles , 'top_brands' : brands})
 
 def bottomwear(request , data = None):
-    brands = ['Roadster' , 'Levis' ,  'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
+    brands = ['Roadster' , 'Levis' ,   'Manyavar' , 'Fossil'  ]
     if data == None:
         mobiles = Product.objects.filter(category = 'BW')  #show all phones
     elif data == 'below':
-        mobiles = Product.objects.filter(category = 'BW').filter(discounted_price__lt =20000)
+        mobiles = Product.objects.filter(category = 'BW').filter(discounted_price__lt =2000)
     elif data == 'above':
-        mobiles = Product.objects.filter(category = 'BW').filter(discounted_price__gt =20000)
+        mobiles = Product.objects.filter(category = 'BW').filter(discounted_price__gt =2000)
     else:
         mobiles = Product.objects.filter(category = 'BW').filter(brand = data)
         

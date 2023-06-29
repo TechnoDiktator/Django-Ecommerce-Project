@@ -22,11 +22,13 @@ urlpatterns = [
     path('address/', views.address, name='address'),
     path('orders/', views.orders, name='orders'),
     path('changepassword/', auth_views.PasswordChangeView.as_view(template_name ='app/changepassword.html' , form_class  = MyPasswordChangeForm  , success_url = '/passwordchangedone/' ), name='changepassword'),
+    path('login/', auth_views.LoginView.as_view(template_name = 'app/login.html', authentication_form = LoginForm  ) , name='login'),
+    path('paymentdone/' , views.payment_done , name = 'payment_done'),
+    
+    
+    
     path('mobile/', views.mobile, name='mobile'),
     path('mobile/<slug:data>', views.mobile, name='mobile'),
-    
-    
-    path('paymentdone/' , views.payment_done , name = 'payment_done'),
     
     path('topwear/', views.topwear, name='topwear'),
     path('topwear/<slug:data>', views.topwear, name='topwear'),
@@ -37,7 +39,6 @@ urlpatterns = [
     path('laptops/', views.laptops, name='laptops'),
     path('laptops/<slug:data>', views.laptops, name='laptops'),
     
-    path('login/', auth_views.LoginView.as_view(template_name = 'app/login.html', authentication_form = LoginForm  ) , name='login'),
     
     path('logout/'  , auth_views.LogoutView.as_view( next_page = '' )  , name='logout'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
