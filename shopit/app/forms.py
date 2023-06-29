@@ -30,7 +30,7 @@ class MyPasswordChangeForm(PasswordChangeForm):
 
 
 
-class MyPasswordResetForm(PasswordResetForm):
+class MyPasswordResetForm(PasswordResetForm): 
     email = forms.EmailField(
         label=_("Email"),
         max_length=254,

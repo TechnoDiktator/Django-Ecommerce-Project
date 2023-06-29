@@ -246,6 +246,7 @@ def bottomwear(request , data = None):
         
     return render(request, 'app/bottomwear.html' , {'bottomwear': mobiles , 'brands' : brands})
 
+
 def laptops(request , data = None):
     brands = ['Apple' , 'Samsung' , 'Redmi' , 'Realmi' , 'Nokia' , 'Oneplus' , 'Oppe' , 'Vivo' , 'Lenovo' , 'Asus' , 'RedMagic' , 'Razor' , 'Pixel' ]
     if data == None:
