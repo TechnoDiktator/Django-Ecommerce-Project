@@ -9,7 +9,7 @@
         <a href="{% url 'bottomwear' %}" class="list-group-item list-group-item-action active">
           All Brands 
         </a>
-        {%for brand in brands%}
+        {%for brand in bottom_brands%}
         <a href="{% url 'bottomwear' brand %}" class="list-group-item list-group-item-action">{{brand}}</a>
         {%endfor%}
         <a href="{% url 'bottomwear' 'below' %}" class="list-group-item list-group-item-action">Economy</a>

@@ -231,7 +231,7 @@ def topwear(request , data = None):
     else:
         mobiles = Product.objects.filter(category = 'TW').filter(brand = data)
         
-    return render(request, 'app/topwear.html' , {'topwear': mobiles , 'brands' : brands})
+    return render(request, 'app/topwear.html' , {'topwear': mobiles , 'top_brands' : brands})
 
 def bottomwear(request , data = None):
     brands = ['Roadster' , 'Levis' ,  'Peter England' , 'Manyavar' , 'Fossil' , 'Omega' , 'Tommy Hilfigure' , 'Gucci' , 'Versace' , 'Logan' , 'Razor' , 'Supreme' ]
@@ -244,7 +244,7 @@ def bottomwear(request , data = None):
     else:
         mobiles = Product.objects.filter(category = 'BW').filter(brand = data)
         
-    return render(request, 'app/bottomwear.html' , {'bottomwear': mobiles , 'brands' : brands})
+    return render(request, 'app/bottomwear.html' , {'bottomwear': mobiles , 'bottom_brands' : brands})
 
 
 def laptops(request , data = None):
